@@ -1,0 +1,51 @@
+{
+  "name": "@maninthecoat/zustand",
+  "version": "0.1.0",
+  "description": "Учебный стейт-менеджер",
+  "license": "MIT",
+  "repository": "https://github.com/Cringe-Driven-Development-Team/zustand-cdd",
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "bun": ">=1.4.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./vanilla": {
+      "types": "./dist/vanilla.d.mts",
+      "import": "./dist/vanilla.mjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "lint": "oxlint src test",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "typecheck": "tsc --noEmit",
+    "test": "bun run test:vanilla && bun run test:react",
+    "test:vanilla": "bun test test/vanilla",
+    "test:react": "bun test --preload ./test/setup-dom.ts test/react",
+    "build": "tsdown",
+    "prepublishOnly": "bun run fmt:check && bun run lint && bun run typecheck && bun run test && bun run build"
+  },
+  "peerDependencies": {
+    "@maninthecoat/react": "^1.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@maninthecoat/react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@happy-dom/global-registrator": "^20.14.5",
+    "@types/bun": "^1.4.2",
+    "oxfmt": "^0.64.0",
+    "oxlint": "^1.79.0",
+    "tsdown": "^0.23.0",
+    "typescript": "^7.0.2",
+    "@maninthecoat/react": "^1.2.0"
+  }
+}
