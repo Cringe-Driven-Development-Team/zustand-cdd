@@ -7,5 +7,11 @@ export default defineConfig({
 		"react/rules-of-hooks": "error",
 		"react/exhaustive-deps": "error",
 	},
+	overrides: [
+		{
+			files: ["test/react/**"],
+			rules: { "react/globals": "off" },
+		},
+	],
 	ignorePatterns: ["dist/", "node_modules/"],
 });
